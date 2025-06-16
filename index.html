@@ -254,4 +254,202 @@
   #introduction img {
     border-radius: 50%;
     max-width: 180px;
-    border: 3px solid var(--
+    border: 3px solid var(--neon-red);
+    box-shadow: 0 0 16px var(--neon-red);
+    float: right;
+    margin-left: 2rem;
+  }
+
+  /* Lists */
+  ul {
+    list-style: none;
+    padding-left: 1rem;
+    color: #bbb;
+  }
+  li + li {
+    margin-top: 0.7rem;
+  }
+
+  /* Portfolio horizontal scroll container */
+  #portfolio {
+    overflow-x: auto;
+    display: flex;
+    gap: 2rem;
+    padding-bottom: 1.5rem;
+  }
+  #portfolio::-webkit-scrollbar {
+    height: 12px;
+  }
+  #portfolio::-webkit-scrollbar-thumb {
+    background: var(--neon-red);
+    border-radius: 12px;
+  }
+
+  .portfolio-item {
+    min-width: 300px;
+    background: #111;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 0 14px var(--neon-red);
+    flex-shrink: 0;
+    color: #eee;
+  }
+  .portfolio-item img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 0.6rem;
+  }
+  .portfolio-item h3 {
+    margin-bottom: 0.4rem;
+    color: var(--neon-red);
+    text-shadow: 0 0 12px var(--neon-red);
+  }
+
+  /* File upload styling */
+  input[type="file"] {
+    background: #222;
+    border: 1px solid var(--neon-skyblue);
+    padding: 0.55rem;
+    color: white;
+    border-radius: 6px;
+    font-size: 1.05rem;
+  }
+  input[type="file"]:focus {
+    outline: 2px solid var(--neon-red);
+  }
+
+  /* Links for connections */
+  #connections a {
+    color: var(--neon-skyblue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.15rem;
+    text-shadow: 0 0 12px var(--neon-skyblue);
+    transition: color 0.3s ease;
+  }
+  #connections a:hover {
+    color: var(--neon-red);
+    text-shadow: 0 0 14px var(--neon-red);
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 650px) {
+    header {
+      gap: 1rem;
+      padding: 1rem 1rem;
+    }
+    #introduction img {
+      float: none;
+      display: block;
+      margin: 1.5rem auto 2.5rem;
+    }
+    #portfolio {
+      display: block;
+      overflow-x: visible;
+    }
+    .portfolio-item {
+      min-width: auto;
+      margin-bottom: 1.8rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header aria-label="Primary navigation">
+  <a href="#introduction">Intro</a>
+  <a href="#cv">CV</a>
+  <a href="#certifications">Certifications</a>
+  <a href="#education">Education</a>
+  <a href="#portfolio">Portfolio</a>
+  <a href="#orgs">Student Orgs</a>
+  <a href="#transcript">Transcript</a>
+  <a href="#interests">Interests</a>
+  <a href="#connections">Connections</a>
+  <a href="#contact">Contact</a>
+</header>
+
+<div id="background-shapes" aria-hidden="true">
+  <!-- Neon shapes with different colors & positions -->
+  <div class="shape triangle" style="top: 8vh; left: 6vw; animation-duration: 95s; border-bottom-color: var(--neon-yellow); filter: drop-shadow(0 0 10px var(--neon-yellow));"></div>
+  <div class="shape pentagon" style="top: 25vh; left: 18vw; animation-duration: 130s; background: var(--neon-green); filter: drop-shadow(0 0 15px var(--neon-green));"></div>
+  <div class="shape hexagon" style="top: 45vh; left: 5vw; animation-duration: 120s; background: var(--neon-white); filter: drop-shadow(0 0 20px var(--neon-white));"></div>
+  <div class="shape circle" style="top: 15vh; left: 72vw; animation-duration: 75s; background: radial-gradient(circle at center, var(--neon-green) 30%, transparent 80%); filter: drop-shadow(0 0 18px var(--neon-green));"></div>
+  <div class="shape cuboid" style="top: 60vh; left: 78vw; animation-duration: 115s;"></div>
+  <div class="shape cone" style="top: 85vh; left: 60vw; animation-duration: 100s;"></div>
+  <div class="shape sphere" style="top: 12vh; left: 85vw; animation-duration: 135s;"></div>
+  <div class="shape triangle" style="top: 68vh; left: 15vw; animation-duration: 140s; border-bottom-color: var(--neon-yellow); filter: drop-shadow(0 0 13px var(--neon-yellow));"></div>
+  <div class="shape pentagon" style="top: 88vh; left: 35vw; animation-duration: 90s; background: var(--neon-green); filter: drop-shadow(0 0 13px var(--neon-green));"></div>
+  <div class="shape hexagon" style="top: 5vh; left: 90vw; animation-duration: 125s; background: var(--neon-white); filter: drop-shadow(0 0 20px var(--neon-white));"></div>
+  <div class="shape circle" style="top: 50vh; left: 90vw; animation-duration: 80s; background: radial-gradient(circle at center, var(--neon-green) 30%, transparent 80%); filter: drop-shadow(0 0 18px var(--neon-green));"></div>
+  <div class="shape cuboid" style="top: 30vh; left: 40vw; animation-duration: 110s;"></div>
+  <div class="shape cone" style="top: 72vh; left: 80vw; animation-duration: 85s;"></div>
+  <div class="shape sphere" style="top: 90vh; left: 70vw; animation-duration: 130s;"></div>
+</div>
+
+<main>
+
+<section id="introduction">
+  <h1>Yash Jaiswal</h1>
+  <img src="your-photo.jpg" alt="Photo of Yash Jaiswal" />
+  <p>Welcome! I’m Yash, a passionate mathematics student with a love for research, art, and technology. Explore my work, education, and interests below.</p>
+</section>
+
+<section id="cv">
+  <h2>Curriculum Vitae</h2>
+  <ul>
+    <li>Download: <a href="your-cv.pdf" target="_blank" rel="noopener">CV (PDF)</a></li>
+    <li>Summary: Strong background in advanced math, programming, and quantitative analysis.</li>
+    <li>Experience: Research assistant, internships, and more.</li>
+  </ul>
+</section>
+
+<section id="certifications">
+  <h2>Certifications</h2>
+  <ul>
+    <li>Data Science Certificate - XYZ Institute</li>
+    <li>Advanced Calculus - ABC University</li>
+    <li>Python Programming - Online Course</li>
+  </ul>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+  <ul>
+    <li>BSc Mathematics, Your University, Expected 2026</li>
+    <li>Relevant Coursework: Calculus I-III, Probability, Modern Algebra, etc.</li>
+  </ul>
+</section>
+
+<section id="portfolio">
+  <h2>Portfolio</h2>
+  <div class="portfolio-item">
+    <img src="artwork1.jpg" alt="Artwork 1" />
+    <h3>Research Paper 1</h3>
+    <p>A brief description of this research paper or artwork.</p>
+  </div>
+  <div class="portfolio-item">
+    <img src="artwork2.jpg" alt="Artwork 2" />
+    <h3>Artwork 2</h3>
+    <p>Description about this artwork.</p>
+  </div>
+</section>
+
+<section id="orgs">
+  <h2>Student Organizations</h2>
+  <ul>
+    <li>Mathematics Club - Member</li>
+    <li>Programming Society - Treasurer</li>
+  </ul>
+</section>
+
+<section id="transcript">
+  <h2>Transcript Upload</h2>
+  <form>
+    <label for="transcript-upload" style="color: var(--neon-skyblue); font-weight: 600;">Upload your transcript (PDF):</label><br />
+    <input type="file" id="transcript-upload" name="transcript-upload" accept=".pdf" />
+  </form>
+</section>
+
+<section id="interests">
+ 
