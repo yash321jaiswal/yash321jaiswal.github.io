@@ -1,305 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Yash Jaiswal | Mathematics & Research Portfolio</title>
-<style>
-  /* Reset and basics */
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0; padding: 0;
-    background: #f9f9f9;
-    color: #333;
-  }
-  a {
-    color: #0d6efd;
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-
-  header {
-    background: #004aad; /* bright blue */
-    color: white;
-    padding: 20px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-  header h1 {
-    margin: 0;
-    font-weight: 700;
-  }
-  nav a {
-    margin-left: 25px;
-    font-weight: 600;
-  }
-  nav a:hover {
-    color: #ffc107; /* bright amber accent */
-  }
-
-  main {
-    max-width: 1100px;
-    margin: 30px auto 60px;
-    padding: 0 20px;
-  }
-
-  /* Section styling */
-  section {
-    margin-bottom: 50px;
-  }
-  section h2 {
-    border-bottom: 3px solid #004aad;
-    padding-bottom: 8px;
-    margin-bottom: 20px;
-    color: #004aad;
-  }
-
-  /* Intro Section */
-  #intro {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    flex-wrap: wrap;
-  }
-  #intro .photo {
-    flex: 0 0 160px;
-    height: 160px;
-    background: #ddd;
-    border-radius: 100%;
-    overflow: hidden;
-    border: 3px solid #ffc107;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  #intro .photo img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-  }
-  #intro .bio {
-    flex: 1;
-    min-width: 250px;
-  }
-  #intro .bio p {
-    font-size: 1.1rem;
-    line-height: 1.5;
-  }
-
-  /* Grid for papers and artwork */
-  .grid-container {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
-  }
-  .card {
-    background: white;
-    box-shadow: 0 0 8px rgb(0 0 0 / 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-    transition: box-shadow 0.3s ease;
-  }
-  .card:hover {
-    box-shadow: 0 0 15px #004aadaa;
-  }
-  .card img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-  }
-  .card-content {
-    padding: 15px;
-  }
-  .card-content h3 {
-    margin: 0 0 8px;
-    font-size: 1.15rem;
-    color: #004aad;
-  }
-  .card-content a {
-    font-size: 0.9rem;
-    color: #0d6efd;
-  }
-
-  /* Upload links style */
-  .file-link {
-    color: #0d6efd;
-    font-weight: 600;
-  }
-
-  /* Footer */
-  footer {
-    background: #004aad;
-    color: white;
-    text-align: center;
-    padding: 25px 15px;
-    font-size: 0.9rem;
-    position: relative;
-  }
-  footer a {
-    color: #ffc107;
-    font-weight: 700;
-    margin: 0 10px;
-  }
-  footer a:hover {
-    text-decoration: underline;
-  }
-
-  /* Responsive nav menu on small */
-  @media (max-width: 600px) {
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yash's Stylish Math Portfolio</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Roboto&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #0b1121, #1a2a4d);
+      color: #e0e7ff;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+    /* Background math pattern (simple circles grid) */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(circle at 20px 20px, rgba(255, 255, 255, 0.05) 2px, transparent 3px),
+        radial-gradient(circle at 60px 60px, rgba(255, 255, 255, 0.05) 2px, transparent 3px);
+      background-size: 80px 80px;
+      z-index: 0;
+      pointer-events: none;
+    }
     header {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    nav {
-      margin-top: 10px;
-    }
-    nav a {
-      margin-left: 0;
-      margin-right: 15px;
-    }
-    #intro {
-      flex-direction: column;
-      align-items: center;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 3rem;
       text-align: center;
+      margin-bottom: 2rem;
+      color: #32e0c4;
+      text-shadow: 0 0 10px #32e0c4;
+      position: relative;
+      z-index: 1;
     }
-    #intro .bio {
-      min-width: auto;
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
-  }
-
-</style>
+    section {
+      background: rgba(10, 20, 40, 0.75);
+      padding: 1.8rem 2rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 15px rgba(50, 224, 196, 0.3);
+    }
+    section h2 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #00ffd5;
+      border-bottom: 2px solid #00ffd5;
+      padding-bottom: 0.4rem;
+    }
+    p, ul {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #c0d6ff;
+    }
+    ul {
+      list-style: inside disc;
+      margin-left: 1rem;
+    }
+    a {
+      color: #32e0c4;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    /* Portfolio artworks */
+    .artwork-img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-top: 1rem;
+      box-shadow: 0 0 15px #32e0c4;
+      display: block;
+    }
+    /* Connections links container */
+    .connections a {
+      display: inline-block;
+      margin-right: 1.5rem;
+      font-size: 1.1rem;
+      padding: 0.3rem 0;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+    .connections a:hover {
+      border-color: #00ffd5;
+    }
+  </style>
 </head>
 <body>
-
-<header>
-  <h1>Yash Jaiswal</h1>
-  <nav>
-    <a href="#intro">Intro</a>
-    <a href="#research">Research Papers</a>
-    <a href="#artwork">Artwork</a>
-    <a href="#cv">CV</a>
-    <a href="#certifications">Certifications</a>
-    <a href="#organizations">Organizations</a>
-    <a href="#transcripts">Transcripts</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
-
-<main>
-
-  <!-- Introduction -->
-  <section id="intro">
-    <div class="photo">
-      <!-- Replace with your photo by changing src -->
-      <img src="your-photo.jpg" alt="Yash Jaiswal" />
-    </div>
-    <div class="bio">
-      <h2>About Me</h2>
-      <p>
-        Hello! I’m Yash Jaiswal, a passionate Mathematics enthusiast and researcher. I enjoy exploring advanced mathematical concepts, conducting research, and expressing creativity through artwork.
-      </p>
-      <p>
-        Feel free to explore my research papers, certifications, and artistic works showcased here.
-      </p>
-    </div>
-  </section>
-
-  <!-- Research Papers -->
-  <section id="research">
-    <h2>Research Papers</h2>
-    <div class="grid-container">
-      <!-- Example paper card -->
-      <div class="card">
-        <img src="research-thumbnail1.jpg" alt="Paper Title 1" />
-        <div class="card-content">
-          <h3>Paper Title 1</h3>
-          <a class="file-link" href="paper1.pdf" target="_blank" rel="noopener noreferrer">View PDF</a>
-        </div>
-      </div>
-      <div class="card">
-        <img src="research-thumbnail2.jpg" alt="Paper Title 2" />
-        <div class="card-content">
-          <h3>Paper Title 2</h3>
-          <a class="file-link" href="paper2.pdf" target="_blank" rel="noopener noreferrer">View PDF</a>
-        </div>
-      </div>
-      <!-- Add more papers by copying the card div and changing details -->
-    </div>
-  </section>
-
+  <header>Yash's Math & Art Portfolio</header>
   
-  <section id="artwork">
-    <h2>Artwork</h2>
-    <div class="grid-container">
-      <!-- Your artworks inserted here -->
-      <div class="card">
-        <img src="IMG_0315.jpeg" alt="Artwork IMG_0315" />
-        <div class="card-content">
-          <h3>Artwork Title 1</h3>
-        </div>
-      </div>
-      <div class="card">
-        <img src="artwork2.jpg" alt="Artwork 2" />
-        <div class="card-content">
-          <h3>Artwork Title 2</h3>
-        </div>
-      </div>
-      <!-- Add more artworks similarly -->
-    </div>
-  </section>
-
-  <!-- CV Section -->
-  <section id="cv">
-    <h2>Curriculum Vitae</h2>
-    <p>
-      <a class="file-link" href="your-cv.pdf" target="_blank" rel="noopener noreferrer">Download/View CV</a>
-    </p>
-  </section>
-
-  <!-- Certifications -->
-  <section id="certifications">
-    <h2>Certifications</h2>
-    <ul>
-      <li>Certification Name 1 – Issued by XYZ Organization (Year)</li>
-      <li>Certification Name 2 – Issued by ABC Institute (Year)</li>
-      <!-- Add more certifications here -->
-    </ul>
-  </section>
-
-  <!-- Student Organizations -->
-  <section id="organizations">
-    <h2>Student Organizations Participation</h2>
-    <ul>
-      <li>Organization 1 – Role/Position (Year)</li>
-      <li>Organization 2 – Role/Position (Year)</li>
-      <!-- Add more as needed -->
-    </ul>
-  </section>
-
-  <!-- Transcripts -->
-  <section id="transcripts">
-    <h2>Transcripts</h2>
-    <p>
-      <a class="file-link" href="your-transcript.pdf" target="_blank" rel="noopener noreferrer">Download/View Transcript</a>
-    </p>
-  </section>
-
-</main>
-
-<!-- Footer with LinkedIn and Contact -->
-<footer id="contact">
-  <p>Contact me: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-  <p>
-    Connect on LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">linkedin.com/in/yourprofile</a>
-  </p>
-</footer>
-
+  <main>
+    <section id="introduction">
+      <h2>Introduction</h2>
+      <p>Hi, I’m Yash — a passionate mathematics student and digital artist. I love exploring math concepts and expressing creativity through artwork.</p>
+    </section>
+    
+    <section id="education">
+      <h2>Education</h2>
+      <ul>
+        <li>Bachelor of Science in Mathematics (In Progress)</li>
+        <li>Relevant Courses: Calculus I–III, Probability, Modern Algebra, Advanced Calculus</li>
+        <li>Self-study: Python programming, data analysis, and finance fundamentals</li>
+      </ul>
+    </section>
+    
+    <section id="portfolio">
+      <h2>Portfolio</h2>
+      <p>Some of my artworks and research papers:</p>
+      <img src="IMG_0315.jpeg" alt="Artwork IMG_0315" class="artwork-img" />
+      <!-- Add more artworks or paper links here -->
+      <p><a href="cv.pdf" target="_blank">Download My CV (PDF)</a></p>
+    </section>
+    
+    <section id="connections" class="connections">
+      <h2>Connections</h2>
+      <a href="https://www.linkedin.com/in/yash321jaiswal" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/yash321jaiswal" target="_blank" rel="noopener">GitHub</a>
+      <!-- Add more social links here -->
+    </section>
+    
+    <section id="interests">
+      <h2>Interests</h2>
+      <ul>
+        <li>Mathematical research and problem solving</li>
+        <li>Algorithmic art and generative graphics</li>
+        <li>Financial mathematics and quantitative analysis</li>
+        <li>Open source projects and programming</li>
+      </ul>
+    </section>
+  </main>
 </body>
 </html>
