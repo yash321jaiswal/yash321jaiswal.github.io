@@ -20,127 +20,153 @@ const sections = [
 export default function MathArtPortfolio() {
   const [active, setActive] = useState("Research");
 
+  const mathSymbols = ["+", "-", "×", "÷", "=", "π", "∞", "∑", "∫", "√", "≠", "E=mc²", "sin(θ)", "f(x)=x²", "log(x)", "Δ", "∂", "θ", "μ", "σ"];
+
   return (
-    <div className="min-h-screen w-full flex bg-black text-white font-sans overflow-x-hidden">
+    <div className="min-h-screen w-full flex bg-[#050505] text-white font-sans overflow-x-hidden relative">
       {/* Vertical Navigation */}
-      <div className="w-1/5 min-h-screen bg-[#0a0a0a] border-r border-gray-700 p-4 flex flex-col gap-4 overflow-y-auto sticky top-0 z-50">
+      <nav className="w-1/5 min-h-screen bg-[#0a0a0a] border-r border-gray-700 p-4 flex flex-col gap-4 overflow-y-auto sticky top-0 z-50">
         {sections.map(({ name, icon: Icon }) => (
           <Button
             key={name}
             variant="ghost"
             onClick={() => setActive(name)}
             className={`justify-start text-lg text-left px-4 py-3 rounded-xl hover:bg-gray-800 transition ${
-              active === name ? "bg-gray-800 text-sky-400" : "text-white"
+              active === name ? "bg-gray-800 text-red-500" : "text-sky-400"
             }`}
           >
             <Icon className="mr-3" /> {name}
           </Button>
         ))}
-      </div>
+      </nav>
 
-      {/* Main Section */}
-      <div className="flex-1 p-10 relative overflow-hidden snap-y snap-mandatory h-screen overflow-scroll">
-        {/* Animated Background Shapes, Symbols, and Mathematicians */}
-        <div className="absolute inset-0 z-0">
-          {/* Rectangle */}
+      {/* Main Content */}
+      <main className="flex-1 p-10 relative overflow-y-scroll snap-y snap-mandatory h-screen">
+        {/* Background shapes */}
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          {/* Big Rectangle */}
           <motion.div
-            className="absolute w-[1000px] h-[500px] bg-yellow-300 mix-blend-screen blur-3xl opacity-90"
-            animate={{ x: [0, -300, 0], y: [0, 200, 0] }}
-            transition={{ repeat: Infinity, duration: 24 }}
+            className="absolute w-[1100px] h-[550px] bg-yellow-400 mix-blend-screen blur-3xl opacity-90 rounded-lg"
+            animate={{ x: [0, -350, 0], y: [0, 250, 0] }}
+            transition={{ repeat: Infinity, duration: 28, ease: "easeInOut" }}
             style={{ top: "50%", left: "45%" }}
           />
-          {/* Circle */}
+          {/* Big Circle */}
           <motion.div
-            className="absolute w-[850px] h-[850px] bg-green-400 rounded-full mix-blend-screen blur-3xl opacity-90"
-            animate={{ y: [0, -200, 0], x: [0, 200, 0] }}
-            transition={{ repeat: Infinity, duration: 20 }}
+            className="absolute w-[900px] h-[900px] bg-green-500 rounded-full mix-blend-screen blur-3xl opacity-90"
+            animate={{ y: [0, -280, 0], x: [0, 280, 0] }}
+            transition={{ repeat: Infinity, duration: 24, ease: "easeInOut" }}
             style={{ top: "15%", left: "10%" }}
           />
-          {/* Triangle */}
+          {/* Big Triangle */}
           <motion.div
-            className="absolute w-0 h-0 border-l-[300px] border-r-[300px] border-b-[600px] border-l-transparent border-r-transparent border-b-white mix-blend-screen opacity-95"
-            animate={{ y: [0, 180, 0], rotate: [0, 90, 0] }}
-            transition={{ repeat: Infinity, duration: 26 }}
+            className="absolute w-0 h-0 border-l-[350px] border-r-[350px] border-b-[700px] border-l-transparent border-r-transparent border-b-white mix-blend-screen opacity-95 rounded"
+            animate={{ y: [0, 200, 0], rotate: [0, 90, 0] }}
+            transition={{ repeat: Infinity, duration: 30, ease: "easeInOut" }}
             style={{ top: "25%", left: "75%" }}
           />
           {/* Math Symbols */}
-          {["+", "-", "×", "÷", "=", "π", "∞", "∑", "∫", "√", "≠", "E=mc²", "sin(θ)", "f(x)=x²", "log(x)", "Δ", "∂", "θ", "μ", "σ"].map((symbol, i) => (
+          {mathSymbols.map((symbol, i) => (
             <motion.div
               key={symbol + i}
-              className="absolute text-7xl font-extrabold text-white mix-blend-screen opacity-95"
-              animate={{ x: [0, i % 2 === 0 ? 180 : -180, 0], y: [0, 120, 0] }}
-              transition={{ repeat: Infinity, duration: 9 + i * 1.2 }}
-              style={{ top: `${5 + i * 3.2}%`, left: `${4 + i * 3.5}%` }}
+              className="absolute text-8xl font-extrabold text-white mix-blend-screen opacity-95 select-none pointer-events-none"
+              animate={{ x: [0, i % 2 === 0 ? 220 : -220, 0], y: [0, 140, 0] }}
+              transition={{ repeat: Infinity, duration: 10 + i * 1.1, ease: "easeInOut" }}
+              style={{ top: `${5 + i * 3.5}%`, left: `${4 + i * 4}%` }}
             >
               {symbol}
             </motion.div>
           ))}
-          {/* Mathematician Background Image */}
+          {/* Mathematician Images */}
           <motion.img
             src="https://upload.wikimedia.org/wikipedia/commons/8/82/Euclid.png"
             alt="Euclid"
-            className="absolute w-[200px] opacity-20 grayscale"
-            animate={{ x: [0, 30, 0] }}
-            transition={{ repeat: Infinity, duration: 30 }}
-            style={{ bottom: "10%", left: "5%" }}
+            className="absolute w-[220px] opacity-20 grayscale rounded-lg"
+            animate={{ x: [0, 35, 0] }}
+            transition={{ repeat: Infinity, duration: 32, ease: "easeInOut" }}
+            style={{ bottom: "12%", left: "6%" }}
           />
           <motion.img
             src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Carl_Friedrich_Gauss.jpg"
             alt="Gauss"
-            className="absolute w-[220px] opacity-20 grayscale"
-            animate={{ y: [0, 30, 0] }}
-            transition={{ repeat: Infinity, duration: 28 }}
-            style={{ top: "5%", right: "8%" }}
+            className="absolute w-[240px] opacity-20 grayscale rounded-lg"
+            animate={{ y: [0, 35, 0] }}
+            transition={{ repeat: Infinity, duration: 30, ease: "easeInOut" }}
+            style={{ top: "7%", right: "9%" }}
           />
         </div>
 
-        {/* Main Content */}
-        <div className="z-10 relative snap-start h-full">
-          <h1 className="text-6xl font-bold text-sky-400 mb-6 drop-shadow-xl">
+        {/* Content Section */}
+        <section className="relative z-10 snap-start min-h-full">
+          <h1 className="text-6xl font-extrabold text-red-500 mb-8 drop-shadow-lg">
             {active}
           </h1>
-          <Card className="bg-[#121212] text-white p-8 rounded-2xl shadow-2xl">
+          <Card className="bg-[#121212] text-white p-8 rounded-3xl shadow-2xl max-w-4xl mx-auto">
             <CardContent>
-              <p className="text-lg text-gray-300">
-                Welcome to the {active} section. Here you'll find a collection of high-quality content related to {active.toLowerCase()}.
-              </p>
+              {/* Content per section */}
               {active === "Research" && (
-                <p className="mt-4 text-gray-400">Explore my academic papers and mathematical investigations.</p>
+                <>
+                  <p className="text-gray-300 text-lg">
+                    Explore my academic papers and mathematical investigations.
+                  </p>
+                  {/* Add links or summaries here */}
+                </>
               )}
               {active === "Math Projects" && (
-                <p className="mt-4 text-gray-400">Browse my coding and analytical projects in mathematics and data science.</p>
+                <p className="text-gray-300 text-lg">
+                  Browse my coding and analytical projects in mathematics and data science.
+                </p>
               )}
               {active === "Artwork" && (
-                <p className="mt-4 text-gray-400">View my original artwork — math-inspired illustrations, sketches, and digital compositions.</p>
+                <p className="text-gray-300 text-lg">
+                  View my original math-inspired artwork and digital compositions.
+                </p>
               )}
               {active === "Education" && (
-                <p className="mt-4 text-gray-400">A timeline of my academic background and institutions I've studied at.</p>
+                <p className="text-gray-300 text-lg">
+                  A timeline of my academic background and institutions I've studied at.
+                </p>
               )}
               {active === "Certifications" && (
-                <p className="mt-4 text-gray-400">View my completed certifications and credentials.</p>
+                <p className="text-gray-300 text-lg">
+                  View my completed certifications and credentials.
+                </p>
               )}
               {active === "Student Orgs" && (
-                <p className="mt-4 text-gray-400">Involvement in math clubs, student chapters, and university groups.</p>
+                <p className="text-gray-300 text-lg">
+                  Involvement in math clubs, student chapters, and university groups.
+                </p>
               )}
               {active === "Connections" && (
-                <p className="mt-4 text-gray-400">Links to my LinkedIn, GitHub, and academic networks.</p>
+                <p className="text-gray-300 text-lg">
+                  Links to my LinkedIn, GitHub, and academic networks.
+                </p>
               )}
               {active === "Interests" && (
-                <p className="mt-4 text-gray-400">Outside of math, I enjoy art, music, chess, and exploring ideas at the intersection of logic and creativity.</p>
+                <p className="text-gray-300 text-lg">
+                  Outside of math, I enjoy art, music, chess, and exploring ideas at the intersection of logic and creativity.
+                </p>
               )}
               {active === "About Me" && (
-                <p className="mt-4 text-gray-400">I’m Yash, a passionate math student exploring the intersection of creativity and logic.</p>
+                <p className="text-gray-300 text-lg">
+                  I’m Yash, a passionate math student exploring the intersection of creativity and logic.
+                </p>
               )}
               {active === "CV / Uploads" && (
-                <div className="mt-4 text-gray-400 space-y-4">
-                  <p>Upload or view my resume, academic transcripts, and portfolio documents here.</p>
-                  <input type="file" className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-sky-50 file:text-sky-700 hover:file:bg-sky-100" />
+                <div>
+                  <p className="text-gray-300 mb-4">
+                    Upload or view my resume, academic transcripts, and portfolio documents here.
+                  </p>
+                  <input
+                    type="file"
+                    className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-sky-50 file:text-sky-700 hover:file:bg-sky-100"
+                  />
                 </div>
               )}
             </CardContent>
           </Card>
-        </div>
-      </div>
+        </section>
+      </main>
     </div>
   );
 }
