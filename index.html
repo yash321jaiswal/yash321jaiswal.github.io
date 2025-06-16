@@ -1,455 +1,146 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Yash Jaiswal - Futuristic Portfolio</title>
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { BookOpen, Brush, Calculator, FileText, User, Link, Award, Upload, Globe, Book } from "lucide-react";
 
-<style>
-  :root {
-    --neon-red: #ff2e2e;
-    --neon-skyblue: #38c8ff;
-    --neon-yellow: #fff639;
-    --neon-green: #2eff7d;
-    --neon-white: #e6e6e6;
-    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
+const sections = [
+  { name: "Research", icon: FileText },
+  { name: "Math Projects", icon: Calculator },
+  { name: "Artwork", icon: Brush },
+  { name: "Education", icon: Book },
+  { name: "Certifications", icon: Award },
+  { name: "Student Orgs", icon: Globe },
+  { name: "Connections", icon: Link },
+  { name: "Interests", icon: User },
+  { name: "About Me", icon: BookOpen },
+  { name: "CV / Uploads", icon: Upload },
+];
 
-  /* Reset */
-  * {
-    margin: 0; padding: 0; box-sizing: border-box;
-  }
+export default function MathArtPortfolio() {
+  const [active, setActive] = useState("Research");
 
-  body {
-    background: linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
-    color: white;
-    font-family: var(--font-family);
-    scroll-behavior: smooth;
-    min-height: 100vh;
-    position: relative;
-    overflow-x: hidden;
-    z-index: 10;
-    background-color: #010101;
-  }
+  return (
+    <div className="min-h-screen w-full flex bg-black text-white font-sans overflow-x-hidden">
+      {/* Vertical Navigation */}
+      <div className="w-1/5 min-h-screen bg-[#0a0a0a] border-r border-gray-700 p-4 flex flex-col gap-4 overflow-y-auto sticky top-0 z-50">
+        {sections.map(({ name, icon: Icon }) => (
+          <Button
+            key={name}
+            variant="ghost"
+            onClick={() => setActive(name)}
+            className={`justify-start text-lg text-left px-4 py-3 rounded-xl hover:bg-gray-800 transition ${
+              active === name ? "bg-gray-800 text-sky-400" : "text-white"
+            }`}
+          >
+            <Icon className="mr-3" /> {name}
+          </Button>
+        ))}
+      </div>
 
-  /* Glossy futuristic black effect on body */
-  body::before {
-    content: '';
-    position: fixed;
-    top:0; left:0; width:100vw; height:100vh;
-    background:
-      radial-gradient(circle at 30% 20%, rgba(255 255 255 / 0.05), transparent 50%),
-      radial-gradient(circle at 80% 80%, rgba(255 255 255 / 0.07), transparent 60%);
-    pointer-events: none;
-    z-index: 1;
-  }
+      {/* Main Section */}
+      <div className="flex-1 p-10 relative overflow-hidden snap-y snap-mandatory h-screen overflow-scroll">
+        {/* Animated Background Shapes, Symbols, and Mathematicians */}
+        <div className="absolute inset-0 z-0">
+          {/* Rectangle */}
+          <motion.div
+            className="absolute w-[1000px] h-[500px] bg-yellow-300 mix-blend-screen blur-3xl opacity-90"
+            animate={{ x: [0, -300, 0], y: [0, 200, 0] }}
+            transition={{ repeat: Infinity, duration: 24 }}
+            style={{ top: "50%", left: "45%" }}
+          />
+          {/* Circle */}
+          <motion.div
+            className="absolute w-[850px] h-[850px] bg-green-400 rounded-full mix-blend-screen blur-3xl opacity-90"
+            animate={{ y: [0, -200, 0], x: [0, 200, 0] }}
+            transition={{ repeat: Infinity, duration: 20 }}
+            style={{ top: "15%", left: "10%" }}
+          />
+          {/* Triangle */}
+          <motion.div
+            className="absolute w-0 h-0 border-l-[300px] border-r-[300px] border-b-[600px] border-l-transparent border-r-transparent border-b-white mix-blend-screen opacity-95"
+            animate={{ y: [0, 180, 0], rotate: [0, 90, 0] }}
+            transition={{ repeat: Infinity, duration: 26 }}
+            style={{ top: "25%", left: "75%" }}
+          />
+          {/* Math Symbols */}
+          {["+", "-", "×", "÷", "=", "π", "∞", "∑", "∫", "√", "≠", "E=mc²", "sin(θ)", "f(x)=x²", "log(x)", "Δ", "∂", "θ", "μ", "σ"].map((symbol, i) => (
+            <motion.div
+              key={symbol + i}
+              className="absolute text-7xl font-extrabold text-white mix-blend-screen opacity-95"
+              animate={{ x: [0, i % 2 === 0 ? 180 : -180, 0], y: [0, 120, 0] }}
+              transition={{ repeat: Infinity, duration: 9 + i * 1.2 }}
+              style={{ top: `${5 + i * 3.2}%`, left: `${4 + i * 3.5}%` }}
+            >
+              {symbol}
+            </motion.div>
+          ))}
+          {/* Mathematician Background Image */}
+          <motion.img
+            src="https://upload.wikimedia.org/wikipedia/commons/8/82/Euclid.png"
+            alt="Euclid"
+            className="absolute w-[200px] opacity-20 grayscale"
+            animate={{ x: [0, 30, 0] }}
+            transition={{ repeat: Infinity, duration: 30 }}
+            style={{ bottom: "10%", left: "5%" }}
+          />
+          <motion.img
+            src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Carl_Friedrich_Gauss.jpg"
+            alt="Gauss"
+            className="absolute w-[220px] opacity-20 grayscale"
+            animate={{ y: [0, 30, 0] }}
+            transition={{ repeat: Infinity, duration: 28 }}
+            style={{ top: "5%", right: "8%" }}
+          />
+        </div>
 
-  /* Background container for shapes */
-  #background-shapes {
-    pointer-events: none;
-    position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    overflow: visible;
-    z-index: 0;
-    mix-blend-mode: screen;
-  }
-
-  /* Common shape styles */
-  .shape {
-    position: absolute;
-    opacity: 0.08;
-    filter: drop-shadow(0 0 6px);
-    animation-timing-function: linear;
-  }
-
-  /* Shape types */
-
-  /* Triangle */
-  .triangle {
-    width: 180px;
-    height: 180px;
-    background: transparent;
-    border-left: 90px solid transparent;
-    border-right: 90px solid transparent;
-    border-bottom: 156px solid var(--neon-yellow);
-    filter: drop-shadow(0 0 12px var(--neon-yellow));
-    animation: driftRotate 100s infinite;
-  }
-
-  /* Pentagon */
-  .pentagon {
-    width: 140px;
-    height: 140px;
-    background: var(--neon-green);
-    clip-path: polygon(
-      50% 0%, 
-      90% 35%, 
-      73% 90%, 
-      27% 90%, 
-      10% 35%
-    );
-    filter: drop-shadow(0 0 12px var(--neon-green));
-    animation: driftRotateReverse 130s infinite;
-  }
-
-  /* Hexagon */
-  .hexagon {
-    width: 160px;
-    height: 138px;
-    background: var(--neon-white);
-    clip-path: polygon(
-      25% 0%, 
-      75% 0%, 
-      100% 50%, 
-      75% 100%, 
-      25% 100%, 
-      0% 50%
-    );
-    filter: drop-shadow(0 0 15px var(--neon-white));
-    animation: driftRotate 110s infinite;
-  }
-
-  /* Circle */
-  .circle {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background: radial-gradient(circle at center, var(--neon-green) 30%, transparent 80%);
-    filter: drop-shadow(0 0 15px var(--neon-green));
-    animation: driftRotateReverse 85s infinite;
-  }
-
-  /* Cuboid - represented as a 3D-ish rectangle */
-  .cuboid {
-    width: 120px;
-    height: 100px;
-    background: linear-gradient(135deg, var(--neon-yellow), var(--neon-green));
-    clip-path: polygon(
-      0% 25%, 50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%
-    );
-    filter: drop-shadow(0 0 14px var(--neon-yellow));
-    animation: driftRotate 90s infinite;
-  }
-
-  /* Cone - triangle with circle base effect */
-  .cone {
-    width: 130px;
-    height: 140px;
-    background: linear-gradient(180deg, var(--neon-white) 40%, transparent 100%);
-    clip-path: polygon(
-      50% 0%, 0% 100%, 100% 100%
-    );
-    filter: drop-shadow(0 0 10px var(--neon-white));
-    animation: driftRotateReverse 95s infinite;
-  }
-
-  /* Sphere - glowing circle with inner shadow */
-  .sphere {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 40% 40%, var(--neon-skyblue), #000 90%);
-    filter: drop-shadow(0 0 15px var(--neon-skyblue));
-    animation: driftRotate 120s infinite;
-  }
-
-  /* Animations */
-  @keyframes driftRotate {
-    0% {
-      transform: translate(0, 0) rotate(0deg);
-      opacity: 0.07;
-    }
-    50% {
-      transform: translate(30px, 25px) rotate(180deg);
-      opacity: 0.13;
-    }
-    100% {
-      transform: translate(0, 0) rotate(360deg);
-      opacity: 0.07;
-    }
-  }
-  @keyframes driftRotateReverse {
-    0% {
-      transform: translate(0, 0) rotate(0deg);
-      opacity: 0.06;
-    }
-    50% {
-      transform: translate(-25px, 30px) rotate(-180deg);
-      opacity: 0.14;
-    }
-    100% {
-      transform: translate(0, 0) rotate(0deg);
-      opacity: 0.06;
-    }
-  }
-
-  /* Header styling */
-  header {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    background: #111;
-    padding: 1rem 2rem;
-    display: flex;
-    gap: 1.8rem;
-    z-index: 20;
-    border-bottom: 1px solid #222;
-    overflow-x: auto;
-  }
-  header::-webkit-scrollbar {
-    height: 8px;
-  }
-  header::-webkit-scrollbar-thumb {
-    background: var(--neon-skyblue);
-    border-radius: 10px;
-  }
-
-  header a {
-    color: var(--neon-red);
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1.1rem;
-    text-shadow: 0 0 8px var(--neon-red);
-    transition: color 0.3s ease, text-shadow 0.3s ease;
-    white-space: nowrap;
-  }
-  header a:hover, header a:focus {
-    color: var(--neon-skyblue);
-    text-shadow: 0 0 14px var(--neon-skyblue);
-  }
-
-  /* Main container */
-  main {
-    padding: 6rem 2rem 4rem;
-    max-width: 900px;
-    margin: 0 auto;
-    z-index: 10;
-    position: relative;
-  }
-
-  /* Section styling */
-  section {
-    margin-bottom: 5rem;
-    scroll-margin-top: 80px;
-  }
-
-  h1, h2 {
-    color: var(--neon-skyblue);
-    text-shadow: 0 0 12px var(--neon-skyblue);
-    margin-bottom: 1.2rem;
-  }
-
-  h2 {
-    border-left: 6px solid var(--neon-red);
-    padding-left: 0.7rem;
-    font-size: 2rem;
-  }
-
-  /* Introduction */
-  #introduction p {
-    font-size: 1.25rem;
-    line-height: 1.5;
-    color: #ccc;
-  }
-
-  #introduction img {
-    border-radius: 50%;
-    max-width: 180px;
-    border: 3px solid var(--neon-red);
-    box-shadow: 0 0 16px var(--neon-red);
-    float: right;
-    margin-left: 2rem;
-  }
-
-  /* Lists */
-  ul {
-    list-style: none;
-    padding-left: 1rem;
-    color: #bbb;
-  }
-  li + li {
-    margin-top: 0.7rem;
-  }
-
-  /* Portfolio horizontal scroll container */
-  #portfolio {
-    overflow-x: auto;
-    display: flex;
-    gap: 2rem;
-    padding-bottom: 1.5rem;
-  }
-  #portfolio::-webkit-scrollbar {
-    height: 12px;
-  }
-  #portfolio::-webkit-scrollbar-thumb {
-    background: var(--neon-red);
-    border-radius: 12px;
-  }
-
-  .portfolio-item {
-    min-width: 300px;
-    background: #111;
-    padding: 1rem;
-    border-radius: 12px;
-    box-shadow: 0 0 14px var(--neon-red);
-    flex-shrink: 0;
-    color: #eee;
-  }
-  .portfolio-item img {
-    max-width: 100%;
-    border-radius: 8px;
-    margin-bottom: 0.6rem;
-  }
-  .portfolio-item h3 {
-    margin-bottom: 0.4rem;
-    color: var(--neon-red);
-    text-shadow: 0 0 12px var(--neon-red);
-  }
-
-  /* File upload styling */
-  input[type="file"] {
-    background: #222;
-    border: 1px solid var(--neon-skyblue);
-    padding: 0.55rem;
-    color: white;
-    border-radius: 6px;
-    font-size: 1.05rem;
-  }
-  input[type="file"]:focus {
-    outline: 2px solid var(--neon-red);
-  }
-
-  /* Links for connections */
-  #connections a {
-    color: var(--neon-skyblue);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1.15rem;
-    text-shadow: 0 0 12px var(--neon-skyblue);
-    transition: color 0.3s ease;
-  }
-  #connections a:hover {
-    color: var(--neon-red);
-    text-shadow: 0 0 14px var(--neon-red);
-  }
-
-  /* Responsive adjustments */
-  @media (max-width: 650px) {
-    header {
-      gap: 1rem;
-      padding: 1rem 1rem;
-    }
-    #introduction img {
-      float: none;
-      display: block;
-      margin: 1.5rem auto 2.5rem;
-    }
-    #portfolio {
-      display: block;
-      overflow-x: visible;
-    }
-    .portfolio-item {
-      min-width: auto;
-      margin-bottom: 1.8rem;
-    }
-  }
-</style>
-</head>
-<body>
-
-<header aria-label="Primary navigation">
-  <a href="#introduction">Intro</a>
-  <a href="#cv">CV</a>
-  <a href="#certifications">Certifications</a>
-  <a href="#education">Education</a>
-  <a href="#portfolio">Portfolio</a>
-  <a href="#orgs">Student Orgs</a>
-  <a href="#transcript">Transcript</a>
-  <a href="#interests">Interests</a>
-  <a href="#connections">Connections</a>
-  <a href="#contact">Contact</a>
-</header>
-
-<div id="background-shapes" aria-hidden="true">
-  <!-- Neon shapes with different colors & positions -->
-  <div class="shape triangle" style="top: 8vh; left: 6vw; animation-duration: 95s; border-bottom-color: var(--neon-yellow); filter: drop-shadow(0 0 10px var(--neon-yellow));"></div>
-  <div class="shape pentagon" style="top: 25vh; left: 18vw; animation-duration: 130s; background: var(--neon-green); filter: drop-shadow(0 0 15px var(--neon-green));"></div>
-  <div class="shape hexagon" style="top: 45vh; left: 5vw; animation-duration: 120s; background: var(--neon-white); filter: drop-shadow(0 0 20px var(--neon-white));"></div>
-  <div class="shape circle" style="top: 15vh; left: 72vw; animation-duration: 75s; background: radial-gradient(circle at center, var(--neon-green) 30%, transparent 80%); filter: drop-shadow(0 0 18px var(--neon-green));"></div>
-  <div class="shape cuboid" style="top: 60vh; left: 78vw; animation-duration: 115s;"></div>
-  <div class="shape cone" style="top: 85vh; left: 60vw; animation-duration: 100s;"></div>
-  <div class="shape sphere" style="top: 12vh; left: 85vw; animation-duration: 135s;"></div>
-  <div class="shape triangle" style="top: 68vh; left: 15vw; animation-duration: 140s; border-bottom-color: var(--neon-yellow); filter: drop-shadow(0 0 13px var(--neon-yellow));"></div>
-  <div class="shape pentagon" style="top: 88vh; left: 35vw; animation-duration: 90s; background: var(--neon-green); filter: drop-shadow(0 0 13px var(--neon-green));"></div>
-  <div class="shape hexagon" style="top: 5vh; left: 90vw; animation-duration: 125s; background: var(--neon-white); filter: drop-shadow(0 0 20px var(--neon-white));"></div>
-  <div class="shape circle" style="top: 50vh; left: 90vw; animation-duration: 80s; background: radial-gradient(circle at center, var(--neon-green) 30%, transparent 80%); filter: drop-shadow(0 0 18px var(--neon-green));"></div>
-  <div class="shape cuboid" style="top: 30vh; left: 40vw; animation-duration: 110s;"></div>
-  <div class="shape cone" style="top: 72vh; left: 80vw; animation-duration: 85s;"></div>
-  <div class="shape sphere" style="top: 90vh; left: 70vw; animation-duration: 130s;"></div>
-</div>
-
-<main>
-
-<section id="introduction">
-  <h1>Yash Jaiswal</h1>
-  <img src="your-photo.jpg" alt="Photo of Yash Jaiswal" />
-  <p>Welcome! I’m Yash, a passionate mathematics student with a love for research, art, and technology. Explore my work, education, and interests below.</p>
-</section>
-
-<section id="cv">
-  <h2>Curriculum Vitae</h2>
-  <ul>
-    <li>Download: <a href="your-cv.pdf" target="_blank" rel="noopener">CV (PDF)</a></li>
-    <li>Summary: Strong background in advanced math, programming, and quantitative analysis.</li>
-    <li>Experience: Research assistant, internships, and more.</li>
-  </ul>
-</section>
-
-<section id="certifications">
-  <h2>Certifications</h2>
-  <ul>
-    <li>Data Science Certificate - XYZ Institute</li>
-    <li>Advanced Calculus - ABC University</li>
-    <li>Python Programming - Online Course</li>
-  </ul>
-</section>
-
-<section id="education">
-  <h2>Education</h2>
-  <ul>
-    <li>BSc Mathematics, Your University, Expected 2026</li>
-    <li>Relevant Coursework: Calculus I-III, Probability, Modern Algebra, etc.</li>
-  </ul>
-</section>
-
-<section id="portfolio">
-  <h2>Portfolio</h2>
-  <div class="portfolio-item">
-    <img src="artwork1.jpg" alt="Artwork 1" />
-    <h3>Research Paper 1</h3>
-    <p>A brief description of this research paper or artwork.</p>
-  </div>
-  <div class="portfolio-item">
-    <img src="artwork2.jpg" alt="Artwork 2" />
-    <h3>Artwork 2</h3>
-    <p>Description about this artwork.</p>
-  </div>
-</section>
-
-<section id="orgs">
-  <h2>Student Organizations</h2>
-  <ul>
-    <li>Mathematics Club - Member</li>
-    <li>Programming Society - Treasurer</li>
-  </ul>
-</section>
-
-<section id="transcript">
-  <h2>Transcript Upload</h2>
-  <form>
-    <label for="transcript-upload" style="color: var(--neon-skyblue); font-weight: 600;">Upload your transcript (PDF):</label><br />
-    <input type="file" id="transcript-upload" name="transcript-upload" accept=".pdf" />
-  </form>
-</section>
-
-<section id="interests">
- 
+        {/* Main Content */}
+        <div className="z-10 relative snap-start h-full">
+          <h1 className="text-6xl font-bold text-sky-400 mb-6 drop-shadow-xl">
+            {active}
+          </h1>
+          <Card className="bg-[#121212] text-white p-8 rounded-2xl shadow-2xl">
+            <CardContent>
+              <p className="text-lg text-gray-300">
+                Welcome to the {active} section. Here you'll find a collection of high-quality content related to {active.toLowerCase()}.
+              </p>
+              {active === "Research" && (
+                <p className="mt-4 text-gray-400">Explore my academic papers and mathematical investigations.</p>
+              )}
+              {active === "Math Projects" && (
+                <p className="mt-4 text-gray-400">Browse my coding and analytical projects in mathematics and data science.</p>
+              )}
+              {active === "Artwork" && (
+                <p className="mt-4 text-gray-400">View my original artwork — math-inspired illustrations, sketches, and digital compositions.</p>
+              )}
+              {active === "Education" && (
+                <p className="mt-4 text-gray-400">A timeline of my academic background and institutions I've studied at.</p>
+              )}
+              {active === "Certifications" && (
+                <p className="mt-4 text-gray-400">View my completed certifications and credentials.</p>
+              )}
+              {active === "Student Orgs" && (
+                <p className="mt-4 text-gray-400">Involvement in math clubs, student chapters, and university groups.</p>
+              )}
+              {active === "Connections" && (
+                <p className="mt-4 text-gray-400">Links to my LinkedIn, GitHub, and academic networks.</p>
+              )}
+              {active === "Interests" && (
+                <p className="mt-4 text-gray-400">Outside of math, I enjoy art, music, chess, and exploring ideas at the intersection of logic and creativity.</p>
+              )}
+              {active === "About Me" && (
+                <p className="mt-4 text-gray-400">I’m Yash, a passionate math student exploring the intersection of creativity and logic.</p>
+              )}
+              {active === "CV / Uploads" && (
+                <div className="mt-4 text-gray-400 space-y-4">
+                  <p>Upload or view my resume, academic transcripts, and portfolio documents here.</p>
+                  <input type="file" className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-sky-50 file:text-sky-700 hover:file:bg-sky-100" />
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+}
