@@ -3,153 +3,121 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Yash's Stylish Math Portfolio</title>
-  
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Roboto&display=swap" rel="stylesheet" />
-  
+  <title>Yash - Portfolio</title>
   <style>
-    /* Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+    /* Base styles */
     body {
-      font-family: 'Roboto', sans-serif;
-      background: linear-gradient(135deg, #0b1121, #1a2a4d);
-      color: #e0e7ff;
-      min-height: 100vh;
-      padding: 2rem 1rem;
-      position: relative;
-      overflow-x: hidden;
-    }
-    /* Background math pattern (simple circles grid) */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background:
-        radial-gradient(circle at 20px 20px, rgba(255, 255, 255, 0.05) 2px, transparent 3px),
-        radial-gradient(circle at 60px 60px, rgba(255, 255, 255, 0.05) 2px, transparent 3px);
-      background-size: 80px 80px;
-      z-index: 0;
-      pointer-events: none;
-    }
-    header {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 3rem;
-      text-align: center;
-      margin-bottom: 2rem;
-      color: #32e0c4;
-      text-shadow: 0 0 10px #32e0c4;
-      position: relative;
-      z-index: 1;
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #fff;
+      color: #111;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
     main {
-      max-width: 900px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
+      max-width: 720px;
+      margin: 3rem auto;
+      padding: 0 1rem;
     }
-    section {
-      background: rgba(10, 20, 40, 0.75);
-      padding: 1.8rem 2rem;
-      border-radius: 12px;
-      margin-bottom: 2rem;
-      box-shadow: 0 8px 15px rgba(50, 224, 196, 0.3);
+    h1, h2 {
+      font-weight: 700;
+      letter-spacing: 0.05em;
     }
-    section h2 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 1.8rem;
+    h1 {
+      font-size: 2.8rem;
       margin-bottom: 1rem;
-      color: #00ffd5;
-      border-bottom: 2px solid #00ffd5;
-      padding-bottom: 0.4rem;
+      color: #222;
+    }
+    h2 {
+      font-size: 1.6rem;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #00bfa6;
+      padding-bottom: 0.2rem;
+      color: #333;
     }
     p, ul {
-      font-size: 1rem;
-      line-height: 1.5;
-      color: #c0d6ff;
+      font-weight: 400;
+      color: #555;
     }
     ul {
-      list-style: inside disc;
-      margin-left: 1rem;
+      list-style: none;
+      padding-left: 0;
+    }
+    ul li {
+      margin-bottom: 0.5rem;
+      position: relative;
+      padding-left: 1.2rem;
+    }
+    ul li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: #00bfa6;
+      font-size: 1.2rem;
+      line-height: 1;
+      top: 0.1rem;
     }
     a {
-      color: #32e0c4;
+      color: #00bfa6;
       text-decoration: none;
-      font-weight: 600;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    /* Portfolio artworks */
-    .artwork-img {
-      max-width: 100%;
-      border-radius: 8px;
-      margin-top: 1rem;
-      box-shadow: 0 0 15px #32e0c4;
-      display: block;
-    }
-    /* Connections links container */
-    .connections a {
-      display: inline-block;
-      margin-right: 1.5rem;
-      font-size: 1.1rem;
-      padding: 0.3rem 0;
+      font-weight: 700;
       border-bottom: 1px solid transparent;
       transition: border-color 0.3s ease;
     }
-    .connections a:hover {
-      border-color: #00ffd5;
+    a:hover {
+      border-color: #00bfa6;
+    }
+    /* Image styling */
+    .artwork-img {
+      width: 100%;
+      max-width: 100%;
+      border-radius: 8px;
+      margin-top: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 191, 166, 0.3);
+      transition: transform 0.3s ease;
+    }
+    .artwork-img:hover {
+      transform: scale(1.05);
+    }
+    /* Smooth fade-in animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(15px);
+      animation: fadeInUp 0.6s forwards;
+      animation-delay: var(--delay, 0s);
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
 <body>
-  <header>Yash's Math & Art Portfolio</header>
-  
   <main>
-    <section id="introduction">
-      <h2>Introduction</h2>
-      <p>Hi, I’m Yash — a passionate mathematics student and digital artist. I love exploring math concepts and expressing creativity through artwork.</p>
-    </section>
-    
-    <section id="education">
+    <h1 class="fade-in" style="--delay: 0s;">Yash Jaiswal</h1>
+    <p class="fade-in" style="--delay: 0.2s;">Mathematics student and digital artist passionate about bridging math and creativity.</p>
+
+    <section class="fade-in" style="--delay: 0.4s;">
       <h2>Education</h2>
       <ul>
-        <li>Bachelor of Science in Mathematics (In Progress)</li>
-        <li>Relevant Courses: Calculus I–III, Probability, Modern Algebra, Advanced Calculus</li>
-        <li>Self-study: Python programming, data analysis, and finance fundamentals</li>
+        <li>B.Sc. Mathematics (In progress)</li>
+        <li>Relevant courses: Calculus, Probability, Algebra, Advanced Calculus</li>
+        <li>Self-study: Python, data science, finance fundamentals</li>
       </ul>
     </section>
-    
-    <section id="portfolio">
+
+    <section class="fade-in" style="--delay: 0.6s;">
       <h2>Portfolio</h2>
-      <p>Some of my artworks and research papers:</p>
+      <p>Some of my artworks and papers:</p>
       <img src="IMG_0315.jpeg" alt="Artwork IMG_0315" class="artwork-img" />
-      <!-- Add more artworks or paper links here -->
-      <p><a href="cv.pdf" target="_blank">Download My CV (PDF)</a></p>
+      <p><a href="cv.pdf" target="_blank" rel="noopener">Download CV</a></p>
     </section>
-    
-    <section id="connections" class="connections">
+
+    <section class="fade-in" style="--delay: 0.8s;">
       <h2>Connections</h2>
-      <a href="https://www.linkedin.com/in/yash321jaiswal" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/yash321jaiswal" target="_blank" rel="noopener">GitHub</a>
-      <!-- Add more social links here -->
-    </section>
-    
-    <section id="interests">
-      <h2>Interests</h2>
-      <ul>
-        <li>Mathematical research and problem solving</li>
-        <li>Algorithmic art and generative graphics</li>
-        <li>Financial mathematics and quantitative analysis</li>
-        <li>Open source projects and programming</li>
-      </ul>
-    </section>
-  </main>
-</body>
-</html>
